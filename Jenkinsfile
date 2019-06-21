@@ -1,24 +1,21 @@
-pipeline {
-    agent any
+Jenkinsfile (Declarative Pipeline)
+pipeline { 
+    agent any 
     stages {
-        /* "Build" and "Test" stages omitted */
-
-        stage('Deploy - Staging') {
-            steps {
-                sh './deploy staging'
-                sh './run-smoke-tests'
+        stage('Build') { 
+            steps { 
+                sh 'make' 
             }
         }
-
-        stage('Sanity check') {
+        stage('Test'){
             steps {
-                input "Does the staging environment look ok?"
+                sh 'make check'
+                junit 'reports/**/*.xml' 
             }
         }
-
-        stage('Deploy - Production') {
+        stage('Deploy') {
             steps {
-                sh './deploy production'
+                sh 'make publish'
             }
         }
     }
