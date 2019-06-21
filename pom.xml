@@ -28,7 +28,7 @@
 
     <id>nexus</id>
 
-    <url>http://18.220.92.137:8081/nexus/content/repositories/snapshots</url>
+    <url>http://13.59.127.190:8081/nexus/content/repositories/snapshots</url>
 
   </snapshotRepository>
 
